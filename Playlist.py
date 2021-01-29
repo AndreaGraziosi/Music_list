@@ -8,8 +8,9 @@ class Playlist:
   # TODO: Create a method called add_song that creates a Song object and adds it to the playlist. This method has one parameter called title.
 
   def add_song(self, title):
-    pass
-
+    new_song = Song(title)
+    new_song.__next_song = self.__first_song
+    self.__first_song = new_song 
 
 
   # TODO: Create a method called find_song that searches for whether a song exits in the playlist and returns its index. The method has one parameters, title, which is the title of the song to be searched for. If the song is found, return its index.
@@ -21,7 +22,16 @@ class Playlist:
   # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
 
   def remove_song(self, title):
-    pass
+    current = self.__first_song
+    previous = None
+    while current.__next_song is not None:
+      previous = current
+      current = current.__next_song
+    if previous is None:
+      self.head = current.__next_song
+    else:
+      previous.__next_song = current.__next_song
+    return previous
 
 
 
@@ -39,5 +49,8 @@ class Playlist:
   # 3. Song Title 3
 
   def print_songs(self):
-    pass
+    current = self.__first_song
+    while current != None:
+      print(current.get_title())
+      current = current.get_next_song()
 
