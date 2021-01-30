@@ -16,8 +16,14 @@ class Playlist:
   # TODO: Create a method called find_song that searches for whether a song exits in the playlist and returns its index. The method has one parameters, title, which is the title of the song to be searched for. If the song is found, return its index.
 
   def find_song(self, title):
-    pass
-
+    current_index = 0
+    current_song = self.__first_song
+    while current_song.__next_song:
+      current_song = current_song.__next_song
+      current_index += 1
+      if current_song.title == title:
+        return current_index
+      
 
   # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
 
@@ -38,7 +44,12 @@ class Playlist:
   # TODO: Create a method called length, which returns the number of songs in the playlist.
 
   def length(self):
-    pass
+    counter = 0 
+    current_song = self.__first_song
+    while current_song is not None:
+      counter = counter + 1
+      current_song = current_song.get_next_song
+    return counter
 
 
   # TODO: Create a method called print_songs that prints a numbered list of the songs in the playlist.
