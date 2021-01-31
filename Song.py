@@ -39,7 +39,7 @@ class Song:
   
 if __name__ == "__main__":
     
-  song_one = Song("Halo")
+  song_one = Song("Lemon Grove Avenue")
   print('=========SONG ONE============')
   print(str(song_one))
   # print('=================GET NEXT==============')
